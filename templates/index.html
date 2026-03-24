@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Similarity Detection</title>
+
+
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<body>
+
+
+<h2> Image Similarity Detection</h2>
+
+<!-- Upload Form -->
+<form method="POST" enctype="multipart/form-data" class="upload-form">
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit">Find Similar Images</button>
+</form>
+
+<!-- Uploaded Image -->
+{% if query_image %}
+    <h3>Your Uploaded Image</h3>
+    <img 
+        src="{{ url_for('static', filename='uploads/' + query_image) }}" 
+        class="query-img"
+        alt="Uploaded Image"
+    >
+{% endif %}
+
+<!-- Similar Images -->
+{% if similar_images %}
+    <h3>Top 5 Similar Images</h3>
+
+    <div class="container">
+        {% for img in similar_images %}
+            <div class="card">
+                <img 
+                    src="{{ url_for('static', filename='dataset/' + img.name) }}" 
+                    class="similar-img"
+                    alt="Similar Image"
+                >
+                <p>Score: {{ img.score }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% elif query_image %}
+    <!-- Show only if image uploaded but no results -->
+    <p>No similar images found.</p>
+{% endif %}
+
+
+</body>
+</html>
