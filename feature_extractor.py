@@ -7,7 +7,7 @@ from keras.applications.mobilenet_v2 import preprocess_input
 # Load model
 model = MobileNetV2(weights="imagenet", include_top=False, pooling="avg")
 
-DATASET_PATH = "static/dataset"
+DATASET_PATH = "static/dataset/images"
 IMAGE_SIZE = (224, 224)
 
 # 🔍 DEBUG LINES (ADD HERE)

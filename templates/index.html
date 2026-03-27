@@ -42,7 +42,7 @@
         {% for img in similar_images %}
             <div class="card">
                 <img 
-                    src="{{ url_for('static', filename='dataset/' + img.name) }}" 
+                    src="{{ url_for('static', filename='dataset/images/' + img.name) }}" 
                     class="similar-img"
                     alt="Similar Image"
                 >
